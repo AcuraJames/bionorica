@@ -1,8 +1,21 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
+import mitt from 'mitt'
+import { createI18n } from 'vue-i18n'
+import locales from '@/locales'
 
-Vue.config.productionTip = false
+import './assets/css/main.css'
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+const i18n = createI18n({
+    locale: 'ru',
+    fallbackLocale: 'en',
+    messages: { ...locales }
+})
+
+const emitter = mitt()
+const app = createApp(App)
+
+app.config.globalProperties.emitter = emitter
+
+app.use(router).use(i18n).mount('#app')
