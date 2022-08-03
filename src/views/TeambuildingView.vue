@@ -1,38 +1,51 @@
 <template>
   <div>
-    <div class="title">{{ $route.meta.title }}</div>
+    <div class="title">{{ $t('route.teambuilding') }}</div>
     <div class="disclaimer">
       Уважаемые коллеги, вы можете выбрать только <strong>одну</strong> экскурсию из представленных. <br>
       Запись на экскурсии закончится <strong>13.08. 2022</strong>, в <strong>18.00</strong>.
     </div>
     <div class="products">
       <div v-for="(product, index) in products" :key="index" class="product">
-        <img :src="product.image" height="216" class="product__img">
+        <div :style="{backgroundImage:`url(${product.image})`}" class="product__img"></div>
         <p class="product__title">{{ product.title }}</p>
         <p v-html="product.desc" class="product__description"></p>
         <div class="divider"></div>
         <div class="product__info">
-          <!-- <div class="timing">
+          <div class="timing">
+            <div class="timing__text">Дата проведения</div>
+            <div class="timing__value">{{ product.data }}</div>
+          </div>
+          <div class="timing">
             <div class="timing__text">Выезд из отеля</div>
-            <div class="timing__value">{{ product.info.departure }}</div>
+            <div class="timing__value">{{ product.hotel_check_out }}</div>
           </div>
           <div class="timing">
             <div class="timing__text">Время в дороге</div>
-            <div class="timing__value">{{ product.info.time }}</div>
-          </div> -->
+            <div class="timing__value">{{ product.travel_time }}</div>
+          </div>
           <div class="timing">
             <div class="timing__text">Начало программы</div>
-            <div class="timing__value">{{ product.time }}</div>
+            <div class="timing__value">{{ product.time_of_event_start }}</div>
           </div>
-          <!-- <div class="timing">
+          <div class="timing">
             <div class="timing__text">Завершение программы</div>
-            <div class="timing__value">{{ product.info.end }}</div>
+            <div class="timing__value">{{ product.time_of_event_end }}</div>
           </div>
           <div class="timing">
             <div class="timing__text">Прибытие в отель</div>
-            <div class="timing__value">{{ product.info.arrival }}</div>
-          </div> -->
-          <button class="registration" @click="selectEvent(product.title)">
+            <div class="timing__value">{{ product.come_back_to_hotel }}</div>
+          </div>
+          <div class="timing">
+            <div class="timing__text">Кол-во свободных мест</div>
+            <div class="timing__value">{{ product.count_of_clients }}</div>
+          </div>
+          <button
+            v-if="!eventId || eventId == product.id"
+            :disabled="product.count_of_clients == 0 || product.status == 'done'"
+            class="registration"
+            @click="selectEvent(product.title)"
+          >
             {{
               product.count_of_clients > 0 && product.status == 'new'  ? 'Записаться' : 
               product.count_of_clients > 0 && product.status == 'done' ? 'Вы учавствуете'  :
@@ -50,26 +63,35 @@ export default {
   name: 'TeambuildingView',
   data() {
     return {
-      products: []
+      products: [],
+      eventId: null
     }
   },
   computed: {
     email() {
       return document.cookie.split(';')[1].split('=')[1]
-    }
+    },
   },
   created() {
     // const fio = document.cookie.split(';')[0].split('=')[1]
     
-    fetch(`https://bionorica-growingrelations25.ru/bio/index?action=get_list_of_events&email=${this.email}`)
+    fetch(`https://bionorica-growingrelations25.ru/index?action=get_list_of_events&email=${this.email}`)
       .then((response) => response.json())
-      .then((data) => this.products = data)
+      .then((data) => {
+        this.products = data
+        let event = this.products.filter(product => product.status == 'done')
+        this.eventId = event[0].id
+      })
   },
   methods: {
     selectEvent(title) {
-      fetch(`https://bionorica-growingrelations25.ru/bio/index?action=select_event&email=${this.email}&title=${title}`)
+      fetch(`https://bionorica-growingrelations25.ru/index?action=select_event&email=${this.email}&title=${title}`)
       .then((response) => response.json())
-      .then((data) => this.products = data)
+      .then((data) => {
+        this.products = data
+        const event = this.products.filter(product => product.status == 'done')
+        this.eventId = event[0].id
+      })
     }
   }
 }
@@ -95,7 +117,11 @@ export default {
 }
 .product__img {
   width: 100%;
-  height: 100%;
+  height: 216px;
+  border-radius: 6px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .product__title {
   margin-bottom: 8px;
@@ -144,8 +170,9 @@ export default {
   color: #191B20;
 }
 .registration {
-  width: 142px;
+  width: 100%;
   height: 46px;
+  margin-top: 20px;
   border: none;
   border-radius: 6px;
   background-color: #51a3ef;
@@ -154,6 +181,9 @@ export default {
   line-height: 22px;
   color: #fff;
   cursor: pointer;
+}
+.registration:disabled {
+  background-color: rgba(25, 27, 32, 0.2);
 }
 
 @media screen and (max-width: 768px) {

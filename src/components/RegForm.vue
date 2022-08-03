@@ -66,24 +66,32 @@ export default {
   },
   methods: {
     submit() {
-      if (this.email.split('@')[1] !== 'bionorica.ru') {
-        this.wrongEmail = true
-      }
+      const domain = this.email.split('@')[1]
 
-      if (this.password != 'ASFM2021') {
+      if (this.password != 'ASFM2022') {
         this.wrongPassword = true
+        return
       }
 
-      fetch(`https://bionorica-growingrelations25.ru/bio/index?action=registration&fio=${this.fio}&email=${this.email}&pass=${this.password}`)
+      if (domain == 'bionorica.ru' || domain == 'bionorica.de' || domain == 'bionorica.com') {
+        this.auth()
+      } else {
+        this.wrongEmail = true
+        return
+      }
+
+    },
+    auth() {
+      fetch(`https://bionorica-growingrelations25.ru/index?action=registration&fio=${this.fio}&email=${this.email}&pass=${this.password}`)
         .then((response) => {
           if (response) {
             document.cookie = `fio=${this.fio};`
             document.cookie = `email=${this.email};`
             document.cookie = `pass=${this.password}`
-            console.log(document.cookie)
             this.$emit('success')
           }
-        })
+        }
+      )
     }
   }
 }

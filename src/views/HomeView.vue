@@ -1,25 +1,21 @@
 <template>
   <div>
-    <div class="title">{{ $route.meta.title }}</div>
+    <div class="title">{{ $t('route.main') }}</div>
     <div class="banner">
       <div class="banner-text">
-        <p class="banner-text__greetings">Приветствуем вас, уважаемые участники! </p>
-        <p class="banner-text__slogan">
-          Слоган Годового совещания сотрудников <br> Компании Бионорика Ready for restart! <br>
-          И мы готовы к новым вызовам!
-        </p>
+        <p class="banner-text__greetings">{{ $t('main.greetings1') }}</p>
+        <p class="banner-text__slogan">{{ $t('main.greetings2') }}</p>
       </div>
       <div class="banner-logo">
-        <img :src="require('../assets/img/logo.png')" alt="">
+        <img :src="require('../assets/img/logo.png')" style="border-radius:14px">
       </div>
     </div>
     <div class="text-block">
-      Девиз будущего успеха компании и каждого из вас - видеть цель и не видеть препятствий! Это азарт! <br>
-      Для вас новые вызовы -- это возможности! Это смелые решения! <br>
-      <br><br>
-      Вместе преодолевая трудности, следуя выбранной стратегии, опираясь на крепкую команду, вы уверенно двигаетесь к поставленным целям и стремительно врываетесь в будущее! <br>
-      <br><br>
-      Сессии и тренинги Годового совещания будут ориентированы на предоставление вам всей информации и инструментов, необходимых для успешной перезагрузки <br>
+      {{ $t('main.paragraph1') }}
+        <br><br>
+      {{ $t('main.paragraph2') }}
+      <br>
+      {{ $t('main.paragraph3') }}
     </div>
     <base-modal v-if="showRegModal" @closeModal="showRegModal = false">
       <reg-form v-if="!isAuth" @success="success" />
@@ -84,6 +80,7 @@ export default {
   overflow: auto;
 }
 .banner-text {
+  max-width: 360px;
   margin-left: 40px;
   text-align: left;
   color: #fff;

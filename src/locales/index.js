@@ -1,5 +1,21 @@
 export default {
   ru: {
+    "route": {
+      "main": "Главная",
+      "programm": "Расписание",
+      "feedback": "Обратная связь",
+      "teambuilding": "Тимбилдинг",
+      "online": "Трансляция онлайн"
+    },
+
+    "main": {
+      "greetings1": "Дорогие друзья!",
+      "greetings2": "Приветствуем Вас на сайте Годового совещания сотрудников компании Бионорика! От всей души поздравляем вас с 25-летнем юбилеем работы нашей Компании в России!",
+      "paragraph1": "Пройден большой путь, насыщенный важными событиями и впечатляющими успехами, и мы верим, что впереди нас ждут новые перспективы и прекрасные возможности!",
+      "paragraph2": "Мы убеждены, что наши связи крепки и надежны, а наш профессиональный союз единомышленников - основа и фундамент для постоянного движения вперед и будущих грандиозных побед.",
+      "paragraph3": "Под объединяющим слоганом «GROWING RELATIONS» мы готовы и дальше укреплять, и налаживать наши крепкие всесторонние связи, стремиться к развитию и процветанию нашей Компании!"
+    },
+
     "timetable": {
       "monday": "Понедельник, 12.09.2022 - День заезда",
       "tuesday": "Вторник, 13.09.2022 - Годовое совещание",
@@ -124,6 +140,22 @@ export default {
     }
   },
   en: {
+    "route": {
+      "main": "Main",
+      "programm": "Programm",
+      "feedback": "Feedback",
+      "teambuilding": "Team building",
+      "online": "Online translation"
+    },
+
+    "main": {
+      "greetings1": "Dear friends!",
+      "greetings2": "We sincerely congratulate you 25 years of our Company’s work in Russia!",
+      "paragraph1": "We have a long way behind us, rich in important events and impressive successes, and we believe that there are plenty of new perspectives and wonderful opportunities ahead of us!",
+      "paragraph2": "We are convinced that our relations are strong and reliable, while our professional union of like-minded persons is a foundation for steady growing forward and future grand victories.",
+      "paragraph3": "Guided by the unifying motto GROWING RELATIONS, we are ready to further enhance and forge establish our strong all-round relations, aiming at development and prosperity of our Company!"
+    },
+
     "timetable": {
       "monday": "Monday, 12.09.2022 - Check-in",
       "tuesday": "Tuesday, 13.09.2022 - ASFM",

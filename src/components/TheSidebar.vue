@@ -1,23 +1,23 @@
 <template>
   <div :class="['sidebar', { 'sidebar-open': isOpen }]">
     <div class="logo-block">
-      <img :src="require('../assets/img/logo.png')" alt="">
+      <img :src="require('../assets/img/logo.png')" style="border-radius:14px">
     </div>
     <div class="nav-block">
       <div class="divider"></div>
       <div class="menu">
 
-        <div :class="['menu-item', { 'menu-item--active': $route.meta.title == 'Главная' }]" @click="redirect('/')">
+        <div :class="['menu-item', { 'menu-item--active': $route.name == 'Home' }]" @click="redirect('/')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
             <path d="M2.25 7.25L9 2L15.75 7.25V15.5C15.75 15.8978 15.592 16.2794 15.3107 16.5607C15.0294 16.842 14.6478 17 14.25 17H3.75C3.35218 17 2.97064 16.842 2.68934 16.5607C2.40804 16.2794 2.25 15.8978 2.25 15.5V7.25Z" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M6.75 17V9.5H11.25V17" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
-          <p class="menu-item__text">Главная</p>
+          <p class="menu-item__text">{{ $t('route.main') }}</p>
         </div>
 
-        <div :class="['menu-item', { 'menu-item--active': $route.meta.title == 'Расписание' }]" @click="redirect('/timetable')">
+        <div :class="['menu-item', { 'menu-item--active': $route.name == 'Timetable' }]" @click="redirect('/timetable')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
             <path d="M3 17C2.60218 17 2.22064 16.842 1.93934 16.5607C1.65804 16.2794 1.5 15.8978 1.5 15.5V8.75C1.5 7.925 2.175 7.25 3 7.25H4.5M3 17H15C15.3978 17 15.7794 16.842 16.0607 16.5607C16.342 16.2794 16.5 15.8978 16.5 15.5V3.5C16.5 3.10218 16.342 2.72064 16.0607 2.43934C15.7794 2.15804 15.3978 2 15 2H6C5.60218 2 5.22064 2.15804 4.93934 2.43934C4.65804 2.72064 4.5 3.10218 4.5 3.5V15.5C4.5 15.8978 4.34196 16.2794 4.06066 16.5607C3.77936 16.842 3.39782 17 3 17Z" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,19 +26,19 @@
             <path d="M7.5 5H13.5V8H7.5V5Z" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
-          <p class="menu-item__text">Расписание</p>
+          <p class="menu-item__text">{{ $t('route.programm') }}</p>
         </div>
 
-        <div :class="['menu-item', { 'menu-item--active': $route.meta.title == 'Обратная связь' }]" @click="redirect('/feedback')">
+        <!-- <div :class="['menu-item', { 'menu-item--active': $route.name== 'Feedback' }]" @click="redirect('/feedback')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
             <path d="M15.75 9.125C15.7526 10.1149 15.5213 11.0914 15.075 11.975C14.5458 13.0338 13.7323 13.9244 12.7256 14.547C11.7189 15.1695 10.5587 15.4995 9.375 15.5C8.3851 15.5026 7.40859 15.2713 6.525 14.825L2.25 16.25L3.675 11.975C3.2287 11.0914 2.99742 10.1149 3 9.125C3.00046 7.94132 3.33046 6.78114 3.95304 5.77441C4.57562 4.76769 5.46619 3.95418 6.525 3.425C7.40859 2.9787 8.3851 2.74742 9.375 2.75H9.75C11.3133 2.83624 12.7898 3.49607 13.8969 4.60314C15.0039 5.71022 15.6638 7.18674 15.75 8.75V9.125Z" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
-          <p class="menu-item__text">Обратная связь</p>
-        </div>
+          <p class="menu-item__text">{{ $t('route.feedback') }}</p>
+        </div> -->
 
-        <div :class="['menu-item', { 'menu-item--active': $route.meta.title == 'Тимбилдинг' }]" @click="redirect('/teambuilding')">
+        <div :class="['menu-item', { 'menu-item--active': $route.name == 'Teambuilding' }]" @click="redirect('/teambuilding')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
             <path d="M12 16.25V14.75C12 13.9544 11.6839 13.1913 11.1213 12.6287C10.5587 12.0661 9.79565 11.75 9 11.75H4.5C3.70435 11.75 2.94129 12.0661 2.37868 12.6287C1.81607 13.1913 1.5 13.9544 1.5 14.75V16.25" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,10 +47,10 @@
             <path d="M12 2.8475C12.6453 3.01273 13.2173 3.38803 13.6257 3.91423C14.0342 4.44044 14.2559 5.08762 14.2559 5.75375C14.2559 6.41988 14.0342 7.06706 13.6257 7.59327C13.2173 8.11947 12.6453 8.49477 12 8.66" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
-          <p class="menu-item__text">Тимбилдинг</p>
+          <p class="menu-item__text">{{ $t('route.teambuilding') }}</p>
         </div>
 
-        <div :class="['menu-item', { 'menu-item--active': $route.meta.title == 'Трансляция онлайн' }]">
+        <!-- <div :class="['menu-item', { 'menu-item--active': $route.name == 'Stream' }]" @click="redirect('/stream')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
             <path d="M1.5 6.5V5C1.5 4.60218 1.65804 4.22064 1.93934 3.93934C2.22064 3.65804 2.60218 3.5 3 3.5H15C15.3978 3.5 15.7794 3.65804 16.0607 3.93934C16.342 4.22064 16.5 4.60218 16.5 5V14C16.5 14.3978 16.342 14.7794 16.0607 15.0607C15.7794 15.342 15.3978 15.5 15 15.5H10.5" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,8 +59,8 @@
             <path d="M1.5 15.5H1.50615" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
-          <p class="menu-item__text">Трансляция онлайн</p>
-        </div>
+          <p class="menu-item__text">{{ $t('route.online') }}</p>
+        </div> -->
 
       </div>
     </div>

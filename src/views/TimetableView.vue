@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="title">{{ $route.meta.title }}</div>
+    <div class="title">{{ $t('route.programm') }}</div>
     <div class="teambuilding">
       <data-table :items="timetables" />
     </div>
