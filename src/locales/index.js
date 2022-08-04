@@ -2,7 +2,7 @@ export default {
   ru: {
     "route": {
       "main": "Главная",
-      "programm": "Расписание",
+      "programm": "Программа",
       "feedback": "Обратная связь",
       "teambuilding": "Тимбилдинг",
       "online": "Трансляция онлайн"

@@ -29,14 +29,14 @@
           <p class="menu-item__text">{{ $t('route.programm') }}</p>
         </div>
 
-        <!-- <div :class="['menu-item', { 'menu-item--active': $route.name== 'Feedback' }]" @click="redirect('/feedback')">
+        <div :class="['menu-item', { 'menu-item--active': $route.name== 'Feedback' }]" @click="redirect('/feedback')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.3">
             <path d="M15.75 9.125C15.7526 10.1149 15.5213 11.0914 15.075 11.975C14.5458 13.0338 13.7323 13.9244 12.7256 14.547C11.7189 15.1695 10.5587 15.4995 9.375 15.5C8.3851 15.5026 7.40859 15.2713 6.525 14.825L2.25 16.25L3.675 11.975C3.2287 11.0914 2.99742 10.1149 3 9.125C3.00046 7.94132 3.33046 6.78114 3.95304 5.77441C4.57562 4.76769 5.46619 3.95418 6.525 3.425C7.40859 2.9787 8.3851 2.74742 9.375 2.75H9.75C11.3133 2.83624 12.7898 3.49607 13.8969 4.60314C15.0039 5.71022 15.6638 7.18674 15.75 8.75V9.125Z" stroke="#191B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
           </svg>
           <p class="menu-item__text">{{ $t('route.feedback') }}</p>
-        </div> -->
+        </div>
 
         <div :class="['menu-item', { 'menu-item--active': $route.name == 'Teambuilding' }]" @click="redirect('/teambuilding')">
           <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">

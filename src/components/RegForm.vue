@@ -82,7 +82,7 @@ export default {
 
     },
     auth() {
-      fetch(`https://bionorica-growingrelations25.ru/index?action=registration&fio=${this.fio}&email=${this.email}&pass=${this.password}`)
+      fetch(`https://bionorica-growingrelations25.ru/index?action=registration&fio=${this.fio}&email=${this.email.toLowerCase()}&pass=${this.password}`)
         .then((response) => {
           if (response) {
             document.cookie = `fio=${this.fio};`
